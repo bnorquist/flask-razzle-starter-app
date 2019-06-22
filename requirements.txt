@@ -6,9 +6,12 @@
 #
 click==7.0                # via flask, pip-tools
 flask==1.0.3
+gunicorn==19.9.0
 itsdangerous==1.1.0       # via flask
 jinja2==2.10.1            # via flask
 markupsafe==1.1.1         # via jinja2
+marshmallow==2.19.5       # via webargs
 pip-tools==3.8.0
 six==1.12.0               # via pip-tools
+webargs==5.3.2
 werkzeug==0.15.4          # via flask
