@@ -1,6 +1,7 @@
 # requirements.in
 # update requirements.txt with:
-flask
+flask==1.0.3
 pip-tools
-gunicorn
-webargs
+gunicorn==19.9.0
+webargs==5.3.2
+pytest
