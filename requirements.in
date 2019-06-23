@@ -5,3 +5,4 @@ pip-tools
 gunicorn==19.9.0
 flask-apispec
 pytest
+pre-commit
