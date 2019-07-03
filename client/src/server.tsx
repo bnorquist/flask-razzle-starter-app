@@ -1,17 +1,20 @@
-import App from './App';
-import React from 'react';
-import { StaticRouter } from 'react-router-dom';
 import express from 'express';
+import React from 'react';
 import { renderToString } from 'react-dom/server';
+// tslint:disable-next-line: no-implicit-dependencies
+import { StaticRouterContext } from 'react-router';
+import { StaticRouter } from 'react-router-dom';
+import App from './App';
 
-const assets = require(process.env.RAZZLE_ASSETS_MANIFEST);
+// tslint:disable-next-line: no-var-requires
+const assets = require(process.env.RAZZLE_ASSETS_MANIFEST!);
 
 const server = express();
 server
   .disable('x-powered-by')
-  .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
+  .use(express.static(process.env.RAZZLE_PUBLIC_DIR!))
   .get('/*', (req, res) => {
-    const context = {};
+    const context: StaticRouterContext = {};
     const markup = renderToString(
       <StaticRouter context={context} location={req.url}>
         <App />
