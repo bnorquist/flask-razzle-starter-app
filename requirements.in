@@ -8,6 +8,5 @@ pytest
 pytest-cov
 pre-commit
 mypy
-psycopg2
 Flask-SQLAlchemy
-
+psycopg2-binary

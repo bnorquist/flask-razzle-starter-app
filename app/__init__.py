@@ -1,10 +1,14 @@
-# import os
+import os
+
 from apispec import APISpec
 from apispec.ext.marshmallow import MarshmallowPlugin
 from flask import Flask
 from flask_apispec.extension import FlaskApiSpec
+from flask_sqlalchemy import SQLAlchemy
 
 from app.routes import hello
+
+db = SQLAlchemy()
 
 
 def create_app(test_config=None):
@@ -22,12 +26,10 @@ def create_app(test_config=None):
         # load the test config if passed in
         app.config.from_mapping(test_config)
 
-    # # ensure the instance folder exists
-    # http://flask.pocoo.org/docs/1.0/tutorial/factory/
-    # try:
-    #     os.makedirs(app.instance_path)
-    # except OSError:
-    #     pass
+    # database
+    app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
+    app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+    db.init_app(app)
 
     # register blueprints
     app.register_blueprint(hello.blueprint)
