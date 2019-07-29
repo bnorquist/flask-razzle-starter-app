@@ -15,11 +15,11 @@ steps:
     versionSpec: '3.7.2'
     architecture: 'x64'
 
-- script: python -m pip install --upgrade pip setuptools wheel
-  displayName: 'Install tools'
+#- script: python -m pip install --upgrade pip setuptools wheel
+#  displayName: 'Install tools'
 
-- script: pip install -r requirements.txt
-  displayName: 'Install requirements'
+#- script: pip install -r requirements.txt
+#  displayName: 'Install requirements'
 
 - script: pre-commit run --all-files --show-diff-on-failure
   displayName: run pre-commit
