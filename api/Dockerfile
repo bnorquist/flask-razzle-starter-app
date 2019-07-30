@@ -1,6 +1,6 @@
 FROM python:3.7.2
 
-WORKDIR /app
+WORKDIR /usr/src/app
 
 RUN apt-get update && \
     apt-get install --no-install-recommends -y \
