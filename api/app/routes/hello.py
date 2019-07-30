@@ -19,7 +19,7 @@ class Person:
 
 
 # a simple page that says hello
-@blueprint.route("/api/hello")
+@blueprint.route("/hello")
 @use_kwargs({"name": fields.Str()})
 @marshal_with(PersonSchema)
 def hello(**kwargs):

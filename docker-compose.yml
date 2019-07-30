@@ -1,0 +1,45 @@
+version: '3.7'
+
+services:
+  api:
+    container_name: sc-api
+    build:
+      context: ./api
+    volumes:
+      - ./api:/usr/src/app
+    env_file: ./api/.env
+    ports:
+      - 8000
+
+  client:
+    container_name: sc-client
+    build: 
+      context: ./client
+    volumes:
+      - ./client/src:/usr/src/app/src
+      - node_modules:/usr/src/app/node_modules
+    ports:
+      - 3000
+      - 3001:3001
+    env_file: ./client/.env
+
+  db:
+    container_name: sc-db
+    image: postgres:11.4-alpine
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+
+  proxy:
+    container_name: sc-proxy
+    image: jwilder/nginx-proxy
+    ports:
+      - 80:80
+    volumes:
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+volumes:
+  node_modules:
+
