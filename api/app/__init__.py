@@ -1,10 +1,9 @@
 # import os
 from apispec import APISpec
 from apispec.ext.marshmallow import MarshmallowPlugin
+from app.routes import hello
 from flask import Flask
 from flask_apispec.extension import FlaskApiSpec
-
-from app.routes import hello
 
 
 def create_app(test_config=None):
