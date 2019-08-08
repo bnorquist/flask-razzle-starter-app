@@ -39,5 +39,5 @@ steps:
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.xml'
     reportDirectory: '$(System.DefaultWorkingDirectory)/**/htmlcov'
 
-- script: docker build -t saveclub .
-  displayName: build docker image
+#- script: docker build -t saveclub .
+#  displayName: build docker image
