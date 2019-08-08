@@ -34,8 +34,8 @@ services:
       - POSTGRES_PASSWORD=postgres
 
   proxy:
+    build: ./nginx-proxy
     container_name: sc-proxy
-    image: jwilder/nginx-proxy
     ports:
       - 80:80
     volumes:
