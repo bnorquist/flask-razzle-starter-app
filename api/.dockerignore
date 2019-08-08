@@ -1,0 +1,9 @@
+.vscode/
+.dockerignore
+.env
+.env.example
+.gitignore
+azure-pipelines.yml
+Dockerfile
+requirements.in
+runtime.txt

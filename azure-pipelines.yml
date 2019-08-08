@@ -10,19 +10,19 @@ pool:
 steps:
 - task: UsePythonVersion@0
   inputs:
-    versionSpec: '3.7.2'
+    versionSpec: '3.7'
     architecture: 'x64'
 
 - script: python -m pip install --upgrade pip setuptools wheel
   displayName: 'Install tools'
 
-- script: pip install -r requirements.txt
+- script: pip install -r api/requirements.txt
   displayName: 'Install requirements'
 
 - script: pre-commit run --all-files --show-diff-on-failure
   displayName: run pre-commit
 
-- script: pytest tests --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+- script: pytest api/tests --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
   displayName: 'run tests'
 
 - task: PublishTestResults@2
@@ -36,3 +36,6 @@ steps:
     codeCoverageTool: Cobertura
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.xml'
     reportDirectory: '$(System.DefaultWorkingDirectory)/**/htmlcov'
+
+#- script: docker build -t saveclub .
+#  displayName: build docker image

@@ -6,7 +6,7 @@ from flask import Flask
 from flask_apispec.extension import FlaskApiSpec
 from flask_sqlalchemy import SQLAlchemy
 
-from app.routes import hello
+from api.app.routes import hello
 
 db = SQLAlchemy()
 

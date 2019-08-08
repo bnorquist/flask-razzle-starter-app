@@ -1,5 +1,5 @@
-from app import db
-from app.models.user import User
+from api.app import db
+from api.app.models.user import User
 
 
 def create_user(username: str, email: str) -> None:

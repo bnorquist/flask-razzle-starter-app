@@ -1,4 +1,4 @@
-from app.services.postgres import create_user
+from api.app.services import create_user
 
 
 class TestPostgres:
