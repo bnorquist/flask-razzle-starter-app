@@ -29,6 +29,8 @@ def create_app(test_config=None):
     app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL")
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
+    with app.app_context():
+        db.create_all()
 
     # register blueprints
     app.register_blueprint(hello.blueprint)
@@ -46,14 +48,14 @@ def create_app(test_config=None):
         }
     )
 
+    # swagger docs
+    docs = FlaskApiSpec(app)
+    docs.register(hello.hello, blueprint="hello_page")
+
     return app
 
 
 app = create_app()
-
-# swagger docs
-docs = FlaskApiSpec(app)
-docs.register(hello.hello, blueprint="hello_page")
 
 if __name__ == "__main__":
     app.run()
