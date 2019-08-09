@@ -11,4 +11,8 @@ COPY . .
 
 RUN pip install -r requirements.txt
 
+RUN pre-commit run --all-files --show-diff-on-failure
+
+RUN pytest api/tests --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+
 ENTRYPOINT ["gunicorn", "--bind=0.0.0.0:8000", "app:app"]
