@@ -13,20 +13,20 @@ steps:
     versionSpec: '3.7'
     architecture: 'x64'
 
-#- script: python -m pip install --upgrade pip setuptools wheel
-#  displayName: 'Install tools'
-#
-#- script: pip install -r api/requirements.txt
-#  displayName: 'Install requirements'
-#
-#- script: pre-commit run --all-files --show-diff-on-failure
-#  displayName: run pre-commit
-#
-#- script: pytest api/tests --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
-#  displayName: 'run tests'
+- script: python -m pip install --upgrade pip setuptools wheel
+  displayName: 'Install tools'
+
+- script: pip install -r api/requirements.txt
+  displayName: 'Install requirements'
+
+- script: pre-commit run --all-files --show-diff-on-failure
+  displayName: run pre-commit
+
+- script: pytest api/tests --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
+  displayName: 'run tests'
 
 - script: docker-compose -p saveclub up -d
-  displayName: build docker image
+  displayName: docker compose
 
 - task: PublishTestResults@2
   condition: succeededOrFailed()
