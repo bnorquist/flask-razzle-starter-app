@@ -7,4 +7,4 @@ build:
     web: api/Dockerfile
     client: client/Dockerfile
 run:
-  web: gunicorn app:app
+  web: gunicorn api/app:app
