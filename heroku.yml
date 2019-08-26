@@ -4,6 +4,7 @@ setup:
       as: DATABASE
 build:
   docker:
-    web: Dockerfile
+    web: api/Dockerfile
+    client: client/Dockerfile
 run:
   web: gunicorn app:app
