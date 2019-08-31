@@ -1,9 +1,11 @@
 'use strict';
 
+const razzleHeroku = require('razzle-heroku');
+
 module.exports = {
   plugins: ['typescript'],
   modify: (defaultConfig, { target, dev }) => {
-    const config = defaultConfig
+    const config = razzleHeroku
 
     if (config.devServer) {
       // Handle HMR within docker env: https://github.com/jaredpalmer/razzle/issues/416

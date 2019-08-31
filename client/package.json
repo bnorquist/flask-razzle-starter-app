@@ -31,6 +31,7 @@
     "@types/webpack-env": "^1.13.9",
     "razzle": "^3.0.0",
     "razzle-plugin-typescript": "^3.0.0",
+    "razzle-heroku": "^3.0.0",
     "ts-jest": "^24.0.2",
     "tslint": "^5.18.0",
     "tslint-react": "^4.0.0",
