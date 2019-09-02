@@ -6,5 +6,5 @@ build:
   docker:
     web: Dockerfile
 
-#run:
-#  web: gunicorn app:app
+run:
+  web: gunicorn app:app
