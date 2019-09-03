@@ -1,44 +1,26 @@
 version: '3.7'
 
 services:
-  api:
-    container_name: sc-api
-    depends_on:
-      - db
-    build:
-      context: ./api
-    volumes:
-      - ./api:/usr/src/app
-    env_file: ./api/.env
-    ports:
-      - 8000
 
-  client:
-    container_name: sc-client
+  api:
     build:
-      context: ./client
-    volumes:
-      - ./client:/usr/src/app
-      - /usr/src/app/node_modules
-      - /usr/src/app/build
-    ports:
-      - 3000
-      - 3001:3001
-    env_file: ./client/.env
+      context: api
+    container_name: api
+    image: saveclub/api
+
+  web:
+    build:
+      context: client
+    container_name: web
+    image: saveclub/web
 
   db:
-    container_name: sc-db
-    image: postgres:11.4-alpine
-    ports:
-      - 5432
-    environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=saveclub_db
+    container_name: db
+    image: mdillon/postgis:11
 
   proxy:
-    container_name: sc-proxy
-    image: jwilder/nginx-proxy
+    container_name: proxy
+    image: saveclub/proxy
     ports:
       - 80:80
     volumes:
