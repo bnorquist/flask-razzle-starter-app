@@ -9,8 +9,6 @@ help: ## Display this help message
 
 deploy: deploy.api deploy.web
 
-
-
 deploy.api:
 	heroku container:login
 	heroku container:push api -a save-backend
@@ -18,5 +16,5 @@ deploy.api:
 
 deploy.web:
 	heroku container:login
-	heroku container:push api -a save-frontend
-	heroku container:release api -a save-frontend
+	heroku container:push web -a save-frontend
+	heroku container:release web -a save-frontend
