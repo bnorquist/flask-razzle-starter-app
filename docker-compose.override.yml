@@ -7,16 +7,18 @@ services:
       - db
     build:
       context: ./api
+      dockerfile: Dockerfile.api
     volumes:
       - ./api:/usr/src/app
     env_file: ./api/.env
     ports:
-      - 8000
+      - 8000:8000
 
-  client:
+  web:
     container_name: sc-client
     build:
       context: ./client
+      dockerfile: Dockerfile.web
     volumes:
       - ./client:/usr/src/app
       - /usr/src/app/node_modules

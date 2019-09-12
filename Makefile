@@ -11,10 +11,10 @@ deploy: deploy.api deploy.web
 
 deploy.api:
 	heroku container:login
-	heroku container:push api -a save-backend
+	heroku container:push api --recursive -a save-backend
 	heroku container:release api -a save-backend
 
 deploy.web:
 	heroku container:login
-	heroku container:push web -a save-frontend
+	heroku container:push web --recursive -a save-frontend
 	heroku container:release web -a save-frontend
