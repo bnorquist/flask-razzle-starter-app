@@ -7,7 +7,7 @@ services:
       - db
     build:
       context: ./api
-      dockerfile: Dockerfile.api
+
     volumes:
       - ./api:/usr/src/app
     environment:
@@ -22,7 +22,7 @@ services:
     container_name: sc-client
     build:
       context: ./client
-      dockerfile: Dockerfile.web
+
     volumes:
       - ./client:/usr/src/app
       - /usr/src/app/node_modules

@@ -10,11 +10,15 @@ help: ## Display this help message
 deploy: deploy.api deploy.web
 
 deploy.api:
+	cd api
 	heroku container:login
-	heroku container:push api --recursive -a save-backend
-	heroku container:release api -a save-backend
+	heroku container:push web -a save-backend
+	heroku container:release web -a save-backend
+	cd ..
 
 deploy.web:
+	cd client
 	heroku container:login
-	heroku container:push web --recursive -a save-frontend
+	heroku container:push web -a save-frontend
 	heroku container:release web -a save-frontend
+	cd ..
