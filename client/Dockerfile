@@ -4,7 +4,8 @@ WORKDIR /usr/src/app
 
 ENV PATH /usr/src/app/node_modules/.bin:$PATH
 
-COPY package.json package-lock.json ./
+
+COPY . .
 RUN npm ci
 
-ENTRYPOINT ["npm", "start"]
+CMD ["npm", "run", "start:prod"]
