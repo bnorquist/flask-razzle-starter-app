@@ -12,5 +12,6 @@
 * `make deploy.api`
 
 ### TODO
-* finish deployment of api
 * merge test-client-api-linkage branch - set URL ENV variable on frontend
+* fork into starter repo
+* add user models/login
