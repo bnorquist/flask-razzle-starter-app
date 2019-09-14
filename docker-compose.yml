@@ -19,9 +19,16 @@ services:
     image: mdillon/postgis:11
 
   proxy:
-    build: ./nginx-proxy
+    build:
+      context: ./nginx-proxy
+      args:
+        - CORS_DOMAIN=api.lvh.me
     container_name: sc-proxy
     ports:
       - 80:80
+      - 443:443
     volumes:
+      - /etc/nginx/certs
+      - /etc/nginx/vhost.d
+      - /usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
