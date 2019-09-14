@@ -10,7 +10,11 @@ services:
       dockerfile: Dockerfile.api
     volumes:
       - ./api:/usr/src/app
-    env_file: ./api/.env
+    environment:
+      VIRTUAL_HOST: api.lvh.me
+      VIRTUAL_PORT: 8000
+      PORT: 8000
+      DATABASE_URL: postgres://postgres:postgres@db:5432/sc-db?connect_timeout=60
     ports:
       - 8000
 
