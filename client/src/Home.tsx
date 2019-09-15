@@ -8,7 +8,7 @@ interface State {
 }
 
 const API_URL: string = 
-  process.env.NODE_ENV === 'production' ? 'https://save-backend.herokuapp.com/' : 'http://api.lvh.me/hello';
+  process.env.NODE_ENV === 'production' ? 'https://save-backend.herokuapp.com/hello' : 'http://api.lvh.me/hello';
 
 class Home extends React.Component<{}, State> {
 
