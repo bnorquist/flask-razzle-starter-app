@@ -18,7 +18,6 @@ class Home extends React.Component<{}, State> {
 
   public async componentDidMount() {
     try {
-      console.log('I am about to run');
       const { data: { name } } = await axios.get(API_URL, {
         params: {
           name: 'LeBron'

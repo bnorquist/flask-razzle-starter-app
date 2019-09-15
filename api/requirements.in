@@ -1,6 +1,7 @@
 # requirements.in
 # update requirements.txt with:
 flask==1.0.3
+flask-cors
 pip-tools
 gunicorn==19.9.0
 flask-apispec

@@ -6,6 +6,7 @@ from app.models.flask_config import DevelopmentConfig
 from app.models.flask_config import ProductionConfig
 from app.routes import hello
 from flask import Flask
+from flask-cors imports CORS
 from flask_apispec.extension import FlaskApiSpec
 from flask_sqlalchemy import SQLAlchemy
 
@@ -20,6 +21,7 @@ def create_app():
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
 
+    CORS(app)
     app.config.from_object(config)
 
     # sqlalchemy db setup
