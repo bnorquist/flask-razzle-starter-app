@@ -7,7 +7,6 @@ services:
       - db
     build:
       context: ./api
-
     volumes:
       - ./api:/usr/src/app
     environment:
@@ -22,7 +21,6 @@ services:
     container_name: sc-client
     build:
       context: ./client
-
     volumes:
       - ./client:/usr/src/app
       - /usr/src/app/node_modules
@@ -30,7 +28,11 @@ services:
     ports:
       - 3000
       - 3001:3001
-    env_file: ./client/.env
+    environment:
+      NODE_ENV: development
+      VIRTUAL_HOST: lvh.me
+      VIRTUAL_PORT: 3000
+      API_URL: api.lvh.me
 
   db:
     container_name: sc-db
