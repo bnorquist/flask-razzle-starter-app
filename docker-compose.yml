@@ -5,30 +5,19 @@ services:
   api:
     build:
       context: api
-    container_name: api
+    container_name: sc-api
     image: saveclub/api
 
   web:
     build:
       context: client
-    container_name: web
+    container_name: sc-client
     image: saveclub/web
 
-  db:
-    container_name: db
-    image: mdillon/postgis:11
-
   proxy:
-    build:
-      context: ./nginx-proxy
-      args:
-        - CORS_DOMAIN=api.lvh.me
     container_name: sc-proxy
+    image: jwilder/nginx-proxy
     ports:
       - 80:80
-      - 443:443
     volumes:
-      - /etc/nginx/certs
-      - /etc/nginx/vhost.d
-      - /usr/share/nginx/html
       - /var/run/docker.sock:/tmp/docker.sock:ro
