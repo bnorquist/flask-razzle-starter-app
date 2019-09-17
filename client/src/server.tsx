@@ -1,28 +1,28 @@
-import express from 'express';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
+import express from 'express'
+import React from 'react'
+import { renderToString } from 'react-dom/server'
 // tslint:disable-next-line: no-implicit-dependencies
-import { StaticRouterContext } from 'react-router';
-import { StaticRouter } from 'react-router-dom';
-import App from './App';
+import { StaticRouterContext } from 'react-router'
+import { StaticRouter } from 'react-router-dom'
+import App from './App'
 
 // tslint:disable-next-line: no-var-requires
-const assets = require(process.env.RAZZLE_ASSETS_MANIFEST!);
+const assets = require(process.env.RAZZLE_ASSETS_MANIFEST!)
 
-const server = express();
+const server = express()
 server
   .disable('x-powered-by')
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR!))
   .get('/*', (req, res) => {
-    const context: StaticRouterContext = {};
+    const context: StaticRouterContext = {}
     const markup = renderToString(
       <StaticRouter context={context} location={req.url}>
         <App />
       </StaticRouter>
-    );
+    )
 
     if (context.url) {
-      res.redirect(context.url);
+      res.redirect(context.url)
     } else {
       res.status(200).send(
         `<!doctype html>
@@ -47,8 +47,8 @@ server
         <div id="root">${markup}</div>
     </body>
 </html>`
-      );
+      )
     }
-  });
+  })
 
-export default server;
+export default server
