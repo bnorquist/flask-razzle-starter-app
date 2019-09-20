@@ -11,6 +11,7 @@
     "no-console": false,
     "no-submodule-imports": false,
     "object-literal-sort-keys": false,
+    "prettier": true,
     "quotemark": [
       true,
       "single",
