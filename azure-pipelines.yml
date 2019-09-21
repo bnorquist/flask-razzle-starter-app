@@ -12,13 +12,17 @@ steps:
   inputs:
     versionSpec: '3.7'
     architecture: 'x64'
-- task: NodeTool@0 
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.13.0'
 
 - script: python -m pip install --upgrade pip setuptools wheel
   displayName: 'Install tools'
 
 - script: pip install -r api/requirements.txt
   displayName: 'Install requirements'
+
+- script: npm i --only=dev --prefix client/package.json
 
 - script: npm i -g tslint typescript prettier
 
