@@ -21,7 +21,7 @@ steps:
 - script: pip install -r api/requirements.txt
   displayName: 'Install requirements'
 
-- script: npm i -g tslint typescript prettier
+- script: npm i tslint typescript prettier
 
 - script: pre-commit run --all-files --show-diff-on-failure
   displayName: run pre-commit
