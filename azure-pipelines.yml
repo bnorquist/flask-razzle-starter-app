@@ -22,7 +22,7 @@ steps:
 - script: pip install -r api/requirements.txt
   displayName: 'Install requirements'
 
-- script: npm i --only=dev --prefix client/package.json
+- script: cd client && npm i --only=dev
 
 - script: npm i -g tslint typescript prettier
 
