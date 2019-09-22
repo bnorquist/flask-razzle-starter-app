@@ -66,7 +66,7 @@ def signup(**kwargs):
     if user is not None:
         return (
             AuthResponse(message="An account with this email address already exists!"),
-            200,
+            400,
         )
 
     new_user = User(
