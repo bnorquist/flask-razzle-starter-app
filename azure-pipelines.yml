@@ -22,7 +22,7 @@ steps:
 - script: pip install -r api/requirements.txt
   displayName: 'Install requirements'
 
-- script: cd client && npm i --only=dev
+- script: cd client && npm i
   displayName: 'Install client packages'
 
 - script: npm i -g tslint typescript tslib
