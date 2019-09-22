@@ -52,7 +52,6 @@ coverage.xml
 *.pot
 
 # Django stuff:
-*.log
 local_settings.py
 db.sqlite3
 
@@ -109,5 +108,5 @@ venv.bak/
 
 # vscode
 .vscode
-
-!logs/.gitkeep
+logs/*
+logs/!.gitkeep
