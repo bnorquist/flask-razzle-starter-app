@@ -108,5 +108,4 @@ venv.bak/
 
 # vscode
 .vscode
-logs/*
-logs/!.gitkeep
+logs/*.log
