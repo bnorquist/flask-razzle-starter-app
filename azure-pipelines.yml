@@ -24,7 +24,7 @@ steps:
 
 - script: cd client && npm i --only=dev
 
-- script: npm i -g typescript
+- script: npm i -g tslint typescript
 
 - script: pre-commit run --all-files --show-diff-on-failure
   displayName: run pre-commit
