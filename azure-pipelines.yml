@@ -23,8 +23,10 @@ steps:
   displayName: 'Install requirements'
 
 - script: cd client && npm i --only=dev
+  displayName: 'Install client packages'
 
 - script: npm i -g tslint typescript
+  displayName: 'Install global npm packages for pre-commit use'
 
 - script: pre-commit run --all-files --show-diff-on-failure
   displayName: run pre-commit
