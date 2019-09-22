@@ -16,11 +16,12 @@
     "axios": "^0.19.0",
     "express": "^4.17.1",
     "qs": "^6.7.0",
+    "razzle": "^3.0.0",
+    "razzle-heroku": "^3.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
-    "razzle": "^3.0.0",
-    "razzle-heroku": "^3.0.0",
+    "tslib": "^1.10.0",
     "typescript": "^3.5.2"
   },
   "devDependencies": {
@@ -31,10 +32,12 @@
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.4",
     "@types/webpack-env": "^1.13.9",
-    "razzle": "^3.0.0",
+    "prettier": "^1.18.2",
     "razzle-plugin-typescript": "^3.0.0",
     "ts-jest": "^24.0.2",
-    "tslint": "^5.18.0",
+    "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-plugin-prettier": "^2.0.1",
     "tslint-react": "^4.0.0"
   },
   "jest": {

@@ -2,11 +2,10 @@ version: '3.7'
 
 services:
   api:
-    container_name: sc-api
     depends_on:
       - db
     build:
-      context: ./api
+      context: api
     volumes:
       - ./api:/usr/src/app
     environment:
@@ -18,9 +17,8 @@ services:
       - 8000
 
   web:
-    container_name: sc-client
     build:
-      context: ./client
+      context: client
     volumes:
       - ./client:/usr/src/app
       - /usr/src/app/node_modules
@@ -45,9 +43,12 @@ services:
       - POSTGRES_DB=saveclub_db
 
   proxy:
-    container_name: sc-proxy
-    image: jwilder/nginx-proxy
+    build:
+      context: proxy
+      args:
+        - CORS_DOMAIN=api.lvh.me
     ports:
       - 80:80
     volumes:
+      - /etc/nginx/vhost.d
       - /var/run/docker.sock:/tmp/docker.sock:ro

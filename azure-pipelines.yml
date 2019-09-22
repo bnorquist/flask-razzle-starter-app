@@ -12,12 +12,21 @@ steps:
   inputs:
     versionSpec: '3.7'
     architecture: 'x64'
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.13.0'
 
 - script: python -m pip install --upgrade pip setuptools wheel
   displayName: 'Install tools'
 
 - script: pip install -r api/requirements.txt
   displayName: 'Install requirements'
+
+- script: cd client && npm i
+  displayName: 'Install client packages'
+
+- script: npm i -g tslint typescript tslib
+  displayName: 'Install global npm packages for pre-commit use'
 
 - script: pre-commit run --all-files --show-diff-on-failure
   displayName: run pre-commit
