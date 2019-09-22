@@ -1,3 +1,4 @@
+import logging
 import os
 
 from apispec import APISpec
@@ -7,8 +8,14 @@ from app.models.flask_config import ProductionConfig
 from flask import Flask
 from flask_apispec.extension import FlaskApiSpec
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_sqlalchemy import SQLAlchemy
+
+logging.basicConfig(
+    filename="logs/api.log", level=logging.INFO, format="%(asctime)s %(message)s"
+)
+logging.info("Init starting...")
+
 
 db = SQLAlchemy()
 login_manager = LoginManager()
@@ -35,6 +42,7 @@ def create_app():
     # register blueprints
     from app.routes import hello
     from app.routes import auth
+
     app.register_blueprint(hello.blueprint)
     app.register_blueprint(auth.blueprint)
 
@@ -58,6 +66,7 @@ def create_app():
     docs = FlaskApiSpec(app)
     docs.register(hello.hello, blueprint="hello_page")
 
+    logging.info("app created")
     return app
 
 
