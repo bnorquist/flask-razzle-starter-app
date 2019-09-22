@@ -1,4 +1,6 @@
-# saveclub
+# Starter App for easy deployment on Heroku
+* Razzle Frontend
+* Flask backend w/ postgres through SQLAlchemy
 
 ## local development instructions
 * docker-compose up
@@ -6,10 +8,10 @@
 * adding requirements
 
 ## Deployment
-###Client
+### Client
 * `make deploy.web`
 
-###Server
+### Server
 * `make deploy.api`
 
 ### TODO

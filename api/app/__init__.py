@@ -4,20 +4,23 @@ from apispec import APISpec
 from apispec.ext.marshmallow import MarshmallowPlugin
 from app.models.flask_config import DevelopmentConfig
 from app.models.flask_config import ProductionConfig
-from app.routes import hello
 from flask import Flask
 from flask_apispec.extension import FlaskApiSpec
 from flask_cors import CORS
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
 
 db = SQLAlchemy()
+login_manager = LoginManager()
 
 
 def create_app():
-    if os.environ.get("environment") == "production":
+    if os.environ.get("ENVIRONMENT") == "PRODUCTION":
         config = ProductionConfig()
     else:
         config = DevelopmentConfig()
+        # initialize dev database here?
+
     # create and configure the app
     app = Flask(__name__, instance_relative_config=True)
 
@@ -28,12 +31,15 @@ def create_app():
     app.config["SQLALCHEMY_DATABASE_URI"] = config.DATABASE_URI
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.init_app(app)
-    # this needs to be called sometime before you interact with the database
-    # with app.app_context():
-    #     db.create_all()
 
     # register blueprints
+    from app.routes import hello
+    from app.routes import auth
     app.register_blueprint(hello.blueprint)
+    app.register_blueprint(auth.blueprint)
+
+    # initialize flask login
+    login_manager.init_app(app)
 
     # apispec
     app.config.update(
