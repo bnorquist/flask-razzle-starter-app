@@ -22,7 +22,8 @@ login_manager = LoginManager()
 
 
 def create_app():
-    if os.environ.get("ENVIRONMENT") == "PRODUCTION":
+    is_production = os.environ.get("ENVIRONMENT") == "PRODUCTION"
+    if is_production:
         config = ProductionConfig()
     else:
         config = DevelopmentConfig()
@@ -65,6 +66,10 @@ def create_app():
     # swagger docs
     docs = FlaskApiSpec(app)
     docs.register(hello.hello, blueprint="hello_page")
+
+    # create all tables
+    if is_production:
+        db.create_all()
 
     logging.info("app created")
     return app
