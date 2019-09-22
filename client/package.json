@@ -32,7 +32,6 @@
     "@types/react-router-dom": "^4.3.4",
     "@types/webpack-env": "^1.13.9",
     "prettier": "^1.18.2",
-    "razzle": "^3.0.0",
     "razzle-plugin-typescript": "^3.0.0",
     "ts-jest": "^24.0.2",
     "tslint": "^5.18.0",

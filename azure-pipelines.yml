@@ -24,14 +24,14 @@ steps:
 
 - script: cd client && npm i --only=dev
 
-- script: npm i -g tslint typescript prettier
+- script: npm i -g typescript
 
 - script: pre-commit run --all-files --show-diff-on-failure
   displayName: run pre-commit
 
 - script: pytest api/tests --doctest-modules --junitxml=junit/test-results.xml --cov=com --cov-report=xml --cov-report=html
   displayName: 'run tests'
-  
+
 - task: PublishTestResults@2
   condition: succeededOrFailed()
   inputs:
