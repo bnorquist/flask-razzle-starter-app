@@ -1,6 +1,7 @@
 {
   "version": 2,
-  "name": "api",
+	"name": "api",
+	"alias": "api.team1017.com",
 	"builds": [
 		{ "src": "index.py", "use": "@now/python" }
 	],

@@ -1,6 +1,7 @@
 {
   "version": 2,
   "name": "client",
+  "alias": "client.team1017.com",
   "builds": [
     { "src": "build/server.js", "use": "@now/node-server" },
     { "src": "build/public/**/*", "use": "@now/static" }
@@ -13,6 +14,6 @@
   ],
   "env": {
     "NODE_ENV": "production",
-    "API_URL": "@saveclub_api_url"
+    "API_URL": "@template_api_url"
   }
 }

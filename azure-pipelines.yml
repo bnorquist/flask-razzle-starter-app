@@ -23,10 +23,10 @@ steps:
 - script: pip install -r api/requirements.txt
   displayName: 'Install requirements'
 
-- script: cd client && npm i
+- script: cd client && npm install
   displayName: 'Install client packages'
 
-- script: npm i -g tslint typescript tslib
+- script: npm install --global tslint typescript tslib
   displayName: 'Install global npm packages'
 
 - script: pre-commit run --all-files --show-diff-on-failure

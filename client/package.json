@@ -1,5 +1,20 @@
 {
-  "name": "save-club",
+  "name": "razzle-typescript-template",
+  "description": "Starter template for React library configured via Razzle with Typescript",
+  "keywords": [
+    "razzle",
+    "typescript",
+    "react",
+    "template"
+  ],
+  "homepage": "https://github.com/bnorquist/flask-razzle-starter-app#readme",
+  "bugs": {
+    "url": "https://github.com/bnorquist/flask-razzle-starter-app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bnorquist/flask-razzle-starter-app.git"
+  },
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -17,7 +32,6 @@
     "express": "^4.17.1",
     "qs": "^6.7.0",
     "razzle": "^3.0.0",
-    "razzle-heroku": "^3.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
