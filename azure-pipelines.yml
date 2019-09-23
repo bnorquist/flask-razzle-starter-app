@@ -47,7 +47,7 @@ steps:
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.xml'
     reportDirectory: '$(System.DefaultWorkingDirectory)/**/htmlcov'
 
-- script: npm run build
+- script: cd client && npm run build
   displayName: 'Build client deploy files'
 
 - script: cd client && now --token $ZEIT_TOKEN --scope $ZEIT_TEAMNAME --prod
