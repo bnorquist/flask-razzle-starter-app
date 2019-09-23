@@ -13,6 +13,6 @@
   ],
   "env": {
     "NODE_ENV": "production",
-    "API_URL": "@template_api_url"
+    "API_URL": "https://api.team1017.com"
   }
 }
