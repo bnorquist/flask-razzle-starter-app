@@ -1,7 +1,6 @@
 {
   "version": 2,
   "name": "client",
-  "alias": "client.team1017.com",
   "builds": [
     { "src": "build/server.js", "use": "@now/node-server" },
     { "src": "build/public/**/*", "use": "@now/static" }
