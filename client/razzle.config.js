@@ -1,6 +1,5 @@
 'use strict';
 
-const razzleHeroku = require('razzle-heroku');
 const serialize = require('serialize-javascript');
 
 const CLIENT_ENV_KEYS = ['API_URL']
@@ -14,9 +13,7 @@ const processEnv = () =>
 
 module.exports = {
   plugins: ['typescript'],
-  modify: (config, { target, dev }, webpack) => {
-    config = razzleHeroku(config, {target, dev}, webpack);
-
+  modify: (config, { target }, webpack) => {
     if (config.devServer) {
       // Handle HMR within docker env: https://github.com/jaredpalmer/razzle/issues/416
       config.devServer.watchOptions['poll'] = 1000;
