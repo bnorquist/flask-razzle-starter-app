@@ -51,7 +51,7 @@ steps:
   displayName: 'Build client deploy files'
 
 - script: cd client && now --token $ZEIT_TOKEN --scope $ZEIT_TEAMNAME --prod
-  displayName: 'Deploy client to Zeit now'
+  displayName: 'Deploy web client to Zeit now'
 
 - script: cd api && now --token $ZEIT_TOKEN --scope $ZEIT_TEAMNAME --prod
   displayName: 'Deploy api to Zeit now'
