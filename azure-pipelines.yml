@@ -50,10 +50,10 @@ steps:
 - script: cd client && npm run build
   displayName: 'Build client deploy files'
 
-- script: cd client && now --token $(ZEIT_TOKEN) --scope $(ZEIT_TEAMNAME) --prod
+- script: cd client && now --token $(ZEIT_TOKEN) --scope $(ZEIT_TEAMNAME)
   displayName: 'Deploy web client to Zeit now'
 
-- script: cd api && now --token $(ZEIT_TOKEN) --scope $(ZEIT_TEAMNAME) --prod
+- script: cd api && now --token $(ZEIT_TOKEN) --scope $(ZEIT_TEAMNAME)
   displayName: 'Deploy api to Zeit now'
 
 
