@@ -35,4 +35,5 @@ repos:
         hooks:
         - id: tslint
           description: Lint and format client files
+          args: [--fix]
           files: '^client/src/*.+(js|jsx|ts|tsx)'
