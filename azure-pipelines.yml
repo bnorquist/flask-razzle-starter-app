@@ -12,6 +12,7 @@ steps:
   inputs:
     versionSpec: '3.7'
     architecture: 'x64'
+
 - task: NodeTool@0
   inputs:
     versionSpec: '10.13.0'
@@ -22,11 +23,11 @@ steps:
 - script: pip install -r api/requirements.txt
   displayName: 'Install requirements'
 
-- script: cd client && npm i
+- script: cd client && npm install
   displayName: 'Install client packages'
 
-- script: npm i -g tslint typescript tslib
-  displayName: 'Install global npm packages for pre-commit use'
+- script: npm install --global tslint typescript tslib
+  displayName: 'Install global npm packages'
 
 - script: pre-commit run --all-files --show-diff-on-failure
   displayName: run pre-commit
@@ -45,5 +46,17 @@ steps:
     codeCoverageTool: Cobertura
     summaryFileLocation: '$(System.DefaultWorkingDirectory)/**/coverage.xml'
     reportDirectory: '$(System.DefaultWorkingDirectory)/**/htmlcov'
+
+- script: cd client && npm run build
+  displayName: 'Build client deploy files'
+
+- script: sudo rm /usr/local/bin/now && npm install --global now
+  displayName: 'Install latest version of Zeit Now'
+
+- script: cd client && now --token $(ZEIT_TOKEN) --scope $(ZEIT_TEAMNAME) --prod
+  displayName: 'Deploy web client to Zeit Now'
+
+- script: cd api && now --token $(ZEIT_TOKEN) --scope $(ZEIT_TEAMNAME) --prod
+  displayName: 'Deploy api to Zeit Now'
 
 

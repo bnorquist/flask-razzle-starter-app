@@ -7,10 +7,7 @@ interface State {
   name: string
 }
 
-const API_URL: string =
-  process.env.NODE_ENV === 'production'
-    ? 'https://save-backend.herokuapp.com/hello'
-    : 'http://api.lvh.me/hello'
+const API_URL: string = process.env.API_URL!
 
 class Home extends React.Component<{}, State> {
   public readonly state: State = {
@@ -21,7 +18,7 @@ class Home extends React.Component<{}, State> {
     try {
       const {
         data: { name }
-      } = await axios.get(API_URL, {
+      } = await axios.get(API_URL + '/hello', {
         params: {
           name: 'LeBron'
         }

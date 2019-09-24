@@ -30,7 +30,7 @@ services:
       NODE_ENV: development
       VIRTUAL_HOST: lvh.me
       VIRTUAL_PORT: 3000
-      API_URL: api.lvh.me
+      API_URL: http://api.lvh.me
 
   db:
     container_name: sc-db

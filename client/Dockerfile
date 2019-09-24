@@ -8,4 +8,4 @@ ENV PATH /usr/src/app/node_modules/.bin:$PATH
 COPY . .
 RUN npm ci
 
-CMD ["npm", "run", "start:prod"]
+CMD ["npm", "run", "start"]
