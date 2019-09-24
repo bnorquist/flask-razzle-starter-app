@@ -51,12 +51,12 @@ steps:
   displayName: 'Build client deploy files'
 
 - script: sudo rm /usr/local/bin/now && npm install --global now
-  displayName: 'Install latest version of Zeit now'
+  displayName: 'Install latest version of Zeit Now'
 
 - script: cd client && now --token $(ZEIT_TOKEN) --scope $(ZEIT_TEAMNAME) --prod
-  displayName: 'Deploy web client to Zeit now'
+  displayName: 'Deploy web client to Zeit Now'
 
 - script: cd api && now --token $(ZEIT_TOKEN) --scope $(ZEIT_TEAMNAME) --prod
-  displayName: 'Deploy api to Zeit now'
+  displayName: 'Deploy api to Zeit Now'
 
 
