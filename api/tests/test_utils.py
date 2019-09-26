@@ -26,7 +26,7 @@ def init_db():
 @with_app_context
 def seed_db():
     new_user = User(
-        email_address=TEST_EMAIL,
+        email=TEST_EMAIL,
         password=generate_password_hash(TEST_PASSWORD, method="sha256"),
         role="admin",
     )

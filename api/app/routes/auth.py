@@ -1,7 +1,7 @@
 import logging
 
 from app import db
-from app.models.roles import Roles
+from app.models.account_actions import AccountManager
 from app.models.user import User
 from flask import Blueprint
 from flask_apispec import marshal_with
@@ -10,7 +10,6 @@ from flask_login import login_user
 from marshmallow import Schema
 from webargs import fields
 from werkzeug.security import check_password_hash
-from werkzeug.security import generate_password_hash
 
 
 blueprint = Blueprint("authorization", __name__)
@@ -18,16 +17,16 @@ blueprint = Blueprint("authorization", __name__)
 
 class LoginSchema(Schema):
     password = fields.Str(required=True)
-    email_address = fields.Str(required=True)
+    email = fields.Str(required=True)
 
     class Meta:
         strict = True
 
 
 class Login(object):
-    def __init__(self, password: str, email_address: str) -> None:
+    def __init__(self, password: str, email: str) -> None:
         self.password = password
-        self.email_address = email_address
+        self.email = email
 
 
 class AuthResponseSchema(Schema):
@@ -45,12 +44,15 @@ class AuthResponse(object):
 def login(**kwargs):
     user_login = Login(**kwargs)
 
-    user = User.query.filter_by(email_address=user_login.email_address).first()
+    user = User.query.filter_by(email=user_login.email).first()
 
     logging.info("User attempting to login")
 
-    if not user or not check_password_hash(user.password, user_login.password):
-        return AuthResponse("Username or Password was incorrect"), 404
+    if not user:
+        return AuthResponse("Username is not registered"), 404
+
+    if not check_password_hash(user.password, user_login.password):
+        return AuthResponse("Incorrect password"), 404
 
     login_user(user)
     return AuthResponse(message="logged in"), 200
@@ -61,7 +63,7 @@ def login(**kwargs):
 @marshal_with(AuthResponseSchema)
 def signup(**kwargs):
     signup = Login(**kwargs)
-    user = User.query.filter_by(email_address=signup.email_address).first()
+    user = User.query.filter_by(email=signup.email).first()
 
     if user is not None:
         return (
@@ -69,15 +71,9 @@ def signup(**kwargs):
             400,
         )
 
-    new_user = User(
-        email_address=signup.email_address,
-        role=Roles.BASIC_ROLE,
-        password=generate_password_hash(password=signup.password),
-    )
-    # add the new user to the database
-    db.session.add(new_user)
-    db.session.commit()
-    return AuthResponse(message=f"Your account has been created, welcome!"), 200
+    AccountManager.create_user(db, signup.email, signup.password)
+
+    return AuthResponse(message="Your account has been created, welcome!"), 200
 
 
 @blueprint.route("/logout")

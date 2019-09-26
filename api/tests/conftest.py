@@ -2,10 +2,11 @@ import os
 
 import pytest
 from app import app
-from tests.test_utils import init_db
-from tests.test_utils import seed_db
 
-if os.environ.get("ENVIRONMENT") == "DEVELOPMENT":
+if os.environ.get("FLASK_ENV") == "development":
+    from tests.test_utils import init_db
+    from tests.test_utils import seed_db
+
     init_db()
     seed_db()
 

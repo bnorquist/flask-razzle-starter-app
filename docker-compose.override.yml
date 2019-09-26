@@ -14,7 +14,7 @@ services:
       VIRTUAL_PORT: 8000
       PORT: 8000
       DATABASE_URL: postgres://postgres:postgres@db:5432/saveclub_db?connect_timeout=60
-      ENVIRONMENT: DEVELOPMENT
+      FLASK_ENV: development
       SECRET_KEY: b'\xec\xe5\xb7WCg\xaf\xc9\xf5\xfam\xaa\x12\xbd\xc7\x02'
     ports:
       - 8000

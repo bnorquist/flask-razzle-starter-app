@@ -12,3 +12,4 @@ mypy
 Flask-SQLAlchemy
 psycopg2-binary
 flask-login
+click
